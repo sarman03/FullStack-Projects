@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <div class="search">
+            <input type="text" id="city-input" placeholder="Enter city name" spellcheck="false">
+            <button id="search-button"><img src="images/search.png" alt="search"></button>
+        </div>
+        <div class="weather">
+            <img src="images/rain.png" class="weather-icon" alt="weather icon">
+            <h1 class="temp">22&#8451;</h1>
+            <h2 class="city">New York</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="images/humidity.png" alt="humidity">
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="images/wind.png" alt="wind">
+                    <div>
+                        <p class="wind">15 km/h</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const apiKey = "0e242397b81e8ee4bd1da3ff605ed9a1";
+
+        async function checkWeather(city) {
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${apiKey}&q=${city}`;
+            const response = await fetch(apiUrl);
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data);
+                updateWeather(data);
+            } else {
+                alert("City not found");
+            }
+        }
+
+        function updateWeather(data) {
+            document.querySelector('.weather-icon').src = `images/${data.weather[0].main.toLowerCase()}.png`;
+            document.querySelector('.temp').innerHTML = `${data.main.temp}&#8451;`;
+            document.querySelector('.city').textContent = data.name;
+            document.querySelector('.humidity').textContent = `${data.main.humidity}%`;
+            document.querySelector('.wind').textContent = `${data.wind.speed} km/h`;
+        }
+
+        document.getElementById('search-button').addEventListener('click', () => {
+            const city = document.getElementById('city-input').value;
+            if (city) {
+                checkWeather(city);
+            }
+        });
+        checkWeather('New York');
+    </script>
+</body>
+</html>
