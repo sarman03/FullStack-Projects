@@ -35,36 +35,47 @@
         </div>
     </div>
 
-    <script>
-        const apiKey = "0e242397b81e8ee4bd1da3ff605ed9a1";
-
-        async function checkWeather(city) {
-            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${apiKey}&q=${city}`;
-            const response = await fetch(apiUrl);
-            if (response.ok) {
-                const data = await response.json();
-                console.log(data);
-                updateWeather(data);
-            } else {
-                alert("City not found");
+        <script>
+            const apiKey = "0e242397b81e8ee4bd1da3ff605ed9a1";
+        
+            async function checkWeather(city) {
+                const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${apiKey}&q=${city}`;
+                const response = await fetch(apiUrl);
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data);
+                    updateWeather(data);
+                } else {
+                    alert("City not found");
+                }
             }
-        }
-
-        function updateWeather(data) {
-            document.querySelector('.weather-icon').src = `images/${data.weather[0].main.toLowerCase()}.png`;
-            document.querySelector('.temp').innerHTML = `${data.main.temp}&#8451;`;
-            document.querySelector('.city').textContent = data.name;
-            document.querySelector('.humidity').textContent = `${data.main.humidity}%`;
-            document.querySelector('.wind').textContent = `${data.wind.speed} km/h`;
-        }
-
-        document.getElementById('search-button').addEventListener('click', () => {
-            const city = document.getElementById('city-input').value;
-            if (city) {
-                checkWeather(city);
+        
+            function updateWeather(data) {
+                document.querySelector('.weather-icon').src = `images/${data.weather[0].main.toLowerCase()}.png`;
+                document.querySelector('.temp').innerHTML = `${data.main.temp}&#8451;`;
+                document.querySelector('.city').textContent = data.name;
+                document.querySelector('.humidity').textContent = `${data.main.humidity}%`;
+                document.querySelector('.wind').textContent = `${data.wind.speed} km/h`;
             }
-        });
-        checkWeather('New York');
-    </script>
+        
+            document.getElementById('search-button').addEventListener('click', () => {
+                const city = document.getElementById('city-input').value;
+                if (city) {
+                    checkWeather(city);
+                }
+            });
+        
+            document.getElementById('city-input').addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    const city = event.target.value;
+                    if (city) {
+                        checkWeather(city);
+                    }
+                }
+            });
+        
+            checkWeather('punjab');
+        </script>
+        
 </body>
 </html>
