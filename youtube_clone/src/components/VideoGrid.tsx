@@ -11,6 +11,37 @@ const VIDEOS=[{
     author:"Sarman",
     views:"45M"
 },
+
+{
+    title:"Peaky Blinders | Hindi| English",
+    img:"photo2.jpg",
+    author:"Sarman",
+    views:"45M"
+},
+{
+    title:"Peaky Blinders | Hindi| English",
+    img:"photo2.jpg",
+    author:"Sarman",
+    views:"45M"
+},
+{
+    title:"Peaky Blinders | Hindi| English",
+    img:"photo2.jpg",
+    author:"Sarman",
+    views:"45M"
+},
+{
+    title:"Peaky Blinders | Hindi| English",
+    img:"photo2.jpg",
+    author:"Sarman",
+    views:"45M"
+},
+{
+    title:"Peaky Blinders | Hindi| English",
+    img:"photo2.jpg",
+    author:"Sarman",
+    views:"45M"
+},
 {
     title:"Peaky Blinders | Hindi| English",
     img:"photo2.jpg",
