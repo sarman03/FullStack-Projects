@@ -4,10 +4,10 @@
         <div className="grid grid-cols-12 pt-3">
 
           <div className="col-span-1">
-          <img className="rounded-full w-14 h-14" src={props.img} ></img>
+          <img className="rounded-full w-12 h-12" src={props.img} ></img>
           </div>
 
-          <div className="col-span-11 ">
+          <div className="col-span-11 pl-5 ">
             {props.title}
           
 
