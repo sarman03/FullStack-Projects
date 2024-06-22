@@ -6,7 +6,12 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <div>
-      <VideoCard>
+      <VideoCard
+      title={"Peaky Blinders | Hindi| English"}
+      img={"photo2.jpg"}
+      author={"Sarman"}
+      views={"45M"}
+      >
 
       </VideoCard>
     </div>

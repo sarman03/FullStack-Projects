@@ -1,22 +1,22 @@
-  export function VideoCard(){
+  export function VideoCard(props:any){
     return <div>
-       <img src="/photo1.jpg" ></img>
-        <div className="grid grid-cols-12">
+       <img className="rounded-xl" src="/photo1.jpg" ></img>
+        <div className="grid grid-cols-12 pt-3">
 
           <div className="col-span-1">
-          <img className="rounded-full w-20 h-20" src="/photo2.jpg" ></img>
+          <img className="rounded-full w-14 h-14" src={props.img} ></img>
           </div>
 
-          <div className="col-span-11 pl-5">
-            Peaky Blinder (English)
+          <div className="col-span-11 ">
+            {props.title}
           
 
           <div className="col-span-11 text-gray-600 text-base">
-          Sarman
+          {props.author}
           </div>
 
           <div className="col-span-11  text-gray-600 text-base">
-          46 M | 13 days ago
+          {props.views} | 13 days ago
           </div>
           </div>
         </div>
