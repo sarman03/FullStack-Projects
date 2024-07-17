@@ -34,8 +34,7 @@ export default function PostForm({ post }) {
             if (dbPost) {
                 navigate(`/post/${dbPost.$id}`);
             }
-        } 
-        else {
+        } else {
             const file = await appwriteService.uploadFile(data.image[0]);
 
             if (file) {
@@ -66,7 +65,7 @@ export default function PostForm({ post }) {
             if (name === "title") {
                 setValue("slug", slugTransform(value.title), { shouldValidate: true });
             }
-        }); 
+        });
 
         return () => subscription.unsubscribe();
     }, [watch, slugTransform, setValue]);
