@@ -1,4 +1,4 @@
-import conf from '../conf.js'
+import conf from '../conf/conf.js'
 import {Client, Account, ID, Databases, Storage, Query} from 'appwrite'
 
 export class Service{
@@ -9,14 +9,14 @@ constructor(){
     this.client
     .setEndpoint(conf.appwriteUrl)
     .setProject(conf.appwriteProjectId)
-    tthis.databases= new Databases(this.client)
+    this.databases= new Databases(this.client)
     this.bucket= new Storage(this.client)
 
 }
 
 // CRUD operations
 
-async createPost({title, slug, content, featuredImage, userId}){
+async createPost({title, slug, content, featuredImage,status, userId}){
     try {
         return await this.databases.createDocument(
             conf.appwriteDatabaseId,
@@ -35,11 +35,12 @@ async createPost({title, slug, content, featuredImage, userId}){
     }
 }
 
-async updatePost(slug, {title, content, featuredImage,status}){
+async updatePost(slug, {title, content, featuredImage, status}){
     try {
         return await this.databases.updateDocument(
             conf.appwriteDatabaseId,
             conf.appwriteCollectionId,
+            slug,
             {
                 title,
                 content,
